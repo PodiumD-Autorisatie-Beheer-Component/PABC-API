@@ -12,7 +12,7 @@ namespace PABC.Server.Features.Seed
 
 
     [ApiController]
-    [Route("/api/v1/seed")]
+    [Route("seed")]
     [Authorize(Policy = ApiKeyAuthentication.Policy)]
     public class SeedController(PabcDbContext db) : ControllerBase
     {

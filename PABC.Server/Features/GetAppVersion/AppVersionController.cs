@@ -10,7 +10,7 @@ namespace PABC.Server.Features.GetAppVersion
     {
         private static readonly AppVersion s_appVersion = GetAppVersionInternal();
 
-        [HttpGet("api/app-version", Name = "GetAppVersion")]
+        [HttpGet("app-version", Name = "GetAppVersion")]
         [ProducesResponseType<AppVersion>(200, MediaTypeNames.Application.Json)]
         public ActionResult<AppVersion> Get() => new OkObjectResult(s_appVersion);
 

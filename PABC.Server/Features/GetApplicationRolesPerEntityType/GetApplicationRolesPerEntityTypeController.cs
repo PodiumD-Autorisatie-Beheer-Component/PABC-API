@@ -1,4 +1,5 @@
 ﻿using System.Net.Mime;
+using Asp.Versioning;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -8,10 +9,14 @@ using PABC.Server.Auth;
 namespace PABC.Server.Features.GetApplicationRolesPerEntityType;
 
 [ApiController]
-[Route("/api/v1/application-roles-per-entity-type")]
+[ApiVersion(1)]
+[ApiVersion(2)]
+[Route("application-roles-per-entity-type")]
 [Authorize(Policy = ApiKeyAuthentication.Policy)]
 public class GetApplicationRolesPerEntityTypeController(PabcDbContext db) : ControllerBase
 {
+    [MapToApiVersion(1)]
+    [MapToApiVersion(2)]
     [HttpPost(Name = "Get application roles per entity type")]
     [Consumes(MediaTypeNames.Application.Json)]
     [ProducesResponseType<GetApplicationRolesResponse>(StatusCodes.Status200OK, MediaTypeNames.Application.Json)]
